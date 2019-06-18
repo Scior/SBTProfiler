@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+"""
+ Build time profiler for Xcode projects.
+"""
+
+__author__ = 'Scior'
+__status__ = 'dev'
+__version__ = '0.1.0'
+
 import argparse
 import cProfile
 import gzip
@@ -18,7 +26,6 @@ def read_activity_log(path):
         [(float, string)]: List of the tuple of consumpted time and description. 
     """
 
-    start = time.time()
     with gzip.open(args.file, mode='rt') as file:
         prog = re.compile('^\d+\.\d+ms')
         profiles = set()
