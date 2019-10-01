@@ -29,10 +29,10 @@ def read_activity_log(path):
     with gzip.open(args.file, mode='rt') as file:
         prog = re.compile('^\d+\.\d+ms')
         profiles = set()
-        for item in file.readline():
+        for item in file.readlines():
             if prog.match(item):
                 items = item.split('\t', 1)
-                profiles.add((float(items[0].strip('ms')), items[1]))
+                profiles.add((float(items[0].strip('ms')), items[1].strip()))
 
     return list(profiles)
 
